@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --surface-2: #263348;
+  --border: #334155;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --accent: #f59e0b;
+  --accent-dim: rgba(245, 158, 11, 0.12);
+  --green: #10b981;
+  --red: #ef4444;
+  --green-dim: rgba(16, 185, 129, 0.12);
+  --red-dim: rgba(239, 68, 68, 0.12);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Sora', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-slate-700/50 bg-slate-800/60 backdrop-blur-sm;
+  }
+
+  .btn-primary {
+    @apply flex items-center justify-center gap-2 rounded-xl bg-amber-500 px-4 py-3
+           font-semibold text-slate-900 transition-all duration-200
+           hover:bg-amber-400 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply flex items-center justify-center gap-2 rounded-xl border border-slate-600
+           px-4 py-3 font-medium text-slate-300 transition-all duration-200
+           hover:border-slate-500 hover:text-white active:scale-95;
+  }
+
+  .btn-danger {
+    @apply flex items-center justify-center gap-2 rounded-xl bg-red-500/10
+           border border-red-500/30 px-4 py-3 font-medium text-red-400
+           transition-all duration-200 hover:bg-red-500/20 active:scale-95;
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-slate-600 bg-slate-700/50 px-4 py-3
+           text-white placeholder-slate-500 outline-none transition-all duration-200
+           focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-slate-400 mb-1.5;
+  }
+
+  .badge-active {
+    @apply inline-flex items-center gap-1 rounded-full bg-emerald-500/10
+           border border-emerald-500/30 px-2.5 py-0.5 text-xs font-medium text-emerald-400;
+  }
+
+  .badge-inactive {
+    @apply inline-flex items-center gap-1 rounded-full bg-slate-600/30
+           border border-slate-600 px-2.5 py-0.5 text-xs font-medium text-slate-400;
+  }
+
+  .mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Bottom nav safe area for mobile */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 1rem);
+}
