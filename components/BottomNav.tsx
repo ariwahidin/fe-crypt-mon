@@ -1,12 +1,13 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { LayoutDashboard, Bell, Settings } from 'lucide-react'
+import { LayoutDashboard, Bell, Settings, Waves } from 'lucide-react'
 import clsx from 'clsx'
 
 const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/alerts', label: 'Alert', icon: Bell },
+  { href: '/whale', label: 'Whale', icon: Waves },
   { href: '/settings', label: 'Pengaturan', icon: Settings },
 ]
 
@@ -20,7 +21,7 @@ export default function BottomNav() {
           return (
             <Link key={href} href={href}
               className={clsx(
-                'flex flex-col items-center gap-1 py-3 px-6 transition-colors duration-200',
+                'flex flex-col items-center gap-1 py-3 px-4 transition-colors duration-200',
                 active ? 'text-amber-500' : 'text-slate-500 hover:text-slate-300'
               )}>
               <Icon className="w-5 h-5" />

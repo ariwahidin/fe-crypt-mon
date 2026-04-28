@@ -127,3 +127,46 @@ export const formatUSD = (n: number) =>
 
 export const formatUSDFull = (n: number) =>
   new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(n)
+
+
+// ─── Whale API ─────────────────────────────────────────────────────────────────
+export const whaleApi = {
+  getTransactions: () => api.get('/whale/transactions'),
+  getSetting: () => api.get('/whale/settings'),
+  upsertSetting: (data: UpsertWhaleSettingPayload) => api.put('/whale/settings', data),
+}
+ 
+// ─── Whale Types ───────────────────────────────────────────────────────────────
+export interface WhaleTransaction {
+  id: number
+  tx_id: string
+  blockchain: string
+  symbol: string
+  amount: number
+  amount_usd: number
+  from_address: string
+  from_owner: string
+  from_owner_type: string
+  to_address: string
+  to_owner: string
+  to_owner_type: string
+  transaction_type: string
+  transaction_at: string
+  fetched_at: string
+}
+ 
+export interface WhaleSetting {
+  id: number
+  user_id: number
+  is_active: boolean
+  min_usd: number
+  cooldown_minutes: number
+  cooldown_until: string | null
+  created_at: string
+}
+ 
+export interface UpsertWhaleSettingPayload {
+  is_active: boolean
+  min_usd: number
+  cooldown_minutes: number
+}
